@@ -15,6 +15,9 @@ namespace Web_Cinema_App.Controllers
 
         public IActionResult MainPage()
         {
+            var filmController = new FilmController();
+            ViewData["Film"] = filmController.Film;
+
             return View();
         }
 

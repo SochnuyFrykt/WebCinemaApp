@@ -1,7 +1,17 @@
-﻿@{
+﻿@using Web_Cinema_App.Controllers
+@{
     ViewData["Title"] = "Main Page";
 }
 
 <div class="text-center">
-    <h1>Здрасте</h1>
+    <h1>Сеансы на ближайшие дни</h1>
 </div>
+
+<div>
+    @foreach (var items in (List<FilmModel>)ViewData["Film"])
+    {
+        <h2>@items.Id | @items.Name | @items.Description | @items.Genre</h2>
+    }
+</div>
+
+

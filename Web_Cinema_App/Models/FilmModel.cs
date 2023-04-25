@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace Web_Cinema_App.Models
+﻿namespace Web_Cinema_App.Models
 {
     public class FilmModel
     {
