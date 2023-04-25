@@ -24,4 +24,8 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=MainPage}/{id?}");
 
+app.MapControllerRoute(
+    name: "films",
+    pattern: "{controller=Film}/{action=FilmView}/{id?}");
+
 app.Run();

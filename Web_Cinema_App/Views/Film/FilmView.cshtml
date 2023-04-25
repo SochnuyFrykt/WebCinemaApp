@@ -1,0 +1,12 @@
+﻿@model List<FilmModel>
+@{
+    ViewData["Title"] = "FilmView";
+}
+
+<h1>FilmView</h1>
+
+@foreach (var item in Model)
+{
+    <h1>@item.Id | @item.Name | @item.Description | @item.Genre</h1>
+}
+
