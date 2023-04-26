@@ -10,6 +10,10 @@ namespace Web_Cinema_App.Controllers
                 new FilmModel() { Id = 1, Name = "Бетмен", Description = "skd;fjbnskdjfbnsdfklbnsdf", Genre = "Боевик" },
                 new FilmModel() { Id = 2, Name = "Бетмен", Description = "skd;fjbnskdjfbnsdfklbnsdf", Genre = "Боевик" },
                 new FilmModel() { Id = 1, Name = "Бетмен", Description = "skd;fjbnskdjfbnsdfklbnsdf", Genre = "Боевик" },
+                new FilmModel() { Id = 1, Name = "Бетмен", Description = "skd;fjbnskdjfbnsdfklbnsdf", Genre = "Боевик" },
+                new FilmModel() { Id = 1, Name = "Бетмен", Description = "skd;fjbnskdjfbnsdfklbnsdf", Genre = "Боевик" },
+                new FilmModel() { Id = 1, Name = "Бетмен", Description = "skd;fjbnskdjfbnsdfklbnsdf", Genre = "Боевик" },
+                new FilmModel() { Id = 1, Name = "Бетмен", Description = "skd;fjbnskdjfbnsdfklbnsdf", Genre = "Боевик" },
             };
 
         [HttpGet]
