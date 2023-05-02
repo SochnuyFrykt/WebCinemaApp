@@ -1,7 +1,12 @@
+using Web_Cinema_App.Entities;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//Даёт доступ DataContext в проекте
+builder.Services.AddDbContext<DataContext>();
 
 var app = builder.Build();
 
@@ -27,5 +32,13 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "films",
     pattern: "{controller=Film}/{action=FilmView}/{id?}");
+
+app.MapControllerRoute(
+    name: "cinema",
+    pattern: "{controller=CinemaModels}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "admin",
+    pattern: "{controller=AdminPanel}/{action=AdminPanelView}/{id?}");
 
 app.Run();
