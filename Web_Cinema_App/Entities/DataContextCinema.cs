@@ -3,7 +3,7 @@ using Web_Cinema_App.Models;
 
 namespace Web_Cinema_App.Entities
 {
-    public class DataContext : DbContext
+    public class DataContextCinema : DbContext
     {
         private string ConnectionPath =
             "Host=localhost;" +

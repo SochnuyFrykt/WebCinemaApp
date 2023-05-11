@@ -10,23 +10,24 @@ using Web_Cinema_App.Models;
 
 namespace Web_Cinema_App.Controllers
 {
-    public class CinemaModelsController : Controller
+    public class CinemaController : Controller
     {
-        public DataContext _context;
+        public readonly DataContextCinema _context;
 
-        public CinemaModelsController(DataContext context)
+        public CinemaController(DataContextCinema context)
         {
             _context = context;
         }
 
-        // GET: CinemaModels
+        // GET: Cinema
         public async Task<IActionResult> Index()
-            => _context.Cinema != null ?
-                View(await _context.Cinema.ToListAsync()) :
-                Problem("Entity set 'DataContext.Cinema'  is null.");
+        {
+              return _context.Cinema != null ? 
+                          View(await _context.Cinema.ToListAsync()) :
+                          Problem("Entity set 'DataContext.Cinema'  is null.");
+        }
 
-
-        // GET: CinemaModels/Details/5
+        // GET: Cinema/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Cinema == null)
@@ -44,13 +45,13 @@ namespace Web_Cinema_App.Controllers
             return View(cinemaModel);
         }
 
-        // GET: CinemaModels/Create
+        // GET: Cinema/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: CinemaModels/Create
+        // POST: Cinema/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -66,7 +67,7 @@ namespace Web_Cinema_App.Controllers
             return View(cinemaModel);
         }
 
-        // GET: CinemaModels/Edit/5
+        // GET: Cinema/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Cinema == null)
@@ -82,7 +83,7 @@ namespace Web_Cinema_App.Controllers
             return View(cinemaModel);
         }
 
-        // POST: CinemaModels/Edit/5
+        // POST: Cinema/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -112,12 +113,12 @@ namespace Web_Cinema_App.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index");
             }
             return View(cinemaModel);
         }
 
-        // GET: CinemaModels/Delete/5
+        // GET: Cinema/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Cinema == null)
@@ -135,7 +136,7 @@ namespace Web_Cinema_App.Controllers
             return View(cinemaModel);
         }
 
-        // POST: CinemaModels/Delete/5
+        // POST: Cinema/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -149,14 +150,14 @@ namespace Web_Cinema_App.Controllers
             {
                 _context.Cinema.Remove(cinemaModel);
             }
-
+            
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool CinemaModelExists(int id)
         {
-            return (_context.Cinema?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Cinema?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

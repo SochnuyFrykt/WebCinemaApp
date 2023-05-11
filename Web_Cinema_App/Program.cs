@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 //Даёт доступ DataContext в проекте
-builder.Services.AddDbContext<DataContext>();
+builder.Services.AddDbContext<DataContextCinema>();
 
 var app = builder.Build();
 
@@ -28,14 +28,6 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=MainPage}/{id?}");
-
-app.MapControllerRoute(
-    name: "films",
-    pattern: "{controller=Film}/{action=FilmView}/{id?}");
-
-app.MapControllerRoute(
-    name: "cinema",
-    pattern: "{controller=CinemaModels}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
     name: "admin",

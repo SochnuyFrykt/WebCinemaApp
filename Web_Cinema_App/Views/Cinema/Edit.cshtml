@@ -4,9 +4,8 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Изменить название</h1>
 
-<h4>CinemaModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,18 +13,18 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="Name_cinema" class="control-label"></label>
+                <label asp-for="Name_cinema" class="control-label">Кинотеатр</label>
                 <input asp-for="Name_cinema" class="form-control" />
                 <span asp-validation-for="Name_cinema" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Сохранить" class="btn btn-primary mt-2" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Вернуться на прошлую страницу</a>
 </div>
 
