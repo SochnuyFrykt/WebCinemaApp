@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Web_Cinema_App.Models.CinemaRoomModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Кинозалы</h1>
+
+<p>
+    <a asp-action="Create">Создать новый кинозал</a>
+</p>
+
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Выбрать кинотеатр
+    </button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Действие</a></li>
+        <li><a class="dropdown-item" href="#">Другое действие</a></li>
+        <li><a class="dropdown-item" href="#">Что-то еще здесь</a></li>
+    </ul>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Название кинозала</th>
+            <th>Кинотеатр</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Name_Room)</td>
+            <td>@Html.DisplayFor(modelItem => item.Id_Cinema)</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Изменить название</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Детали</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
