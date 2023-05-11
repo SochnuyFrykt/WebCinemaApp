@@ -22,9 +22,12 @@ namespace Web_Cinema_App.Controllers
         // GET: CinemaRoom
         public async Task<IActionResult> Index()
         {
-              return _context.CinemaRoom != null ? 
-                          View(await _context.CinemaRoom.ToListAsync()) :
-                          Problem("Entity set 'DataContextCinemaRoom.CinemaRoom'  is null.");
+            var dataContex = new DataContextCinema();
+            var cinema = new CinemaController(dataContex);
+            ViewData["CinemaName"] = cinema.GetCinemaName();
+            return _context.CinemaRoom != null ? 
+                        View(await _context.CinemaRoom.ToListAsync()) :
+                        Problem("Entity set 'DataContextCinemaRoom.CinemaRoom'  is null.");
         }
 
         // GET: CinemaRoom/Details/5

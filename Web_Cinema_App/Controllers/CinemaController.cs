@@ -19,6 +19,16 @@ namespace Web_Cinema_App.Controllers
             _context = context;
         }
 
+        public List<string> GetCinemaName()
+        {
+            List<string> cinemaName = new List<string>();
+            foreach (var item in _context.Cinema.ToList())
+            {
+                cinemaName.Add(item.Name_cinema);
+            }
+            return cinemaName;
+        } 
+
         // GET: Cinema
         public async Task<IActionResult> Index()
         {
