@@ -2,16 +2,13 @@
 
 namespace Web_Cinema_App.Models
 {
-    public class CinemaRoomModel
+    public class GenreModel
     {
         [System.ComponentModel.DataAnnotations.Key]
         [Column("id")]
         public int Id { get; set; }
 
-        [Column("name_room")]
-        public string Name_Room { get; set; }
-
-        [Column("id_cinema")]
-        public int Id_Cinema { get; set; }
+        [Column("genre")]
+        public string Genre { get; set; }
     }
 }
