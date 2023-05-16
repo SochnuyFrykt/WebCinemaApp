@@ -19,9 +19,6 @@
         {
             <li class="dropdown-item">@item</li>
         }
-        <li><a class="dropdown-item" href="#">Действие</a></li>
-        <li><a class="dropdown-item" href="#">Другое действие</a></li>
-        <li><a class="dropdown-item" href="#">Что-то еще здесь</a></li>
     </ul>
 </div>
 
@@ -34,16 +31,17 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>@Html.DisplayFor(modelItem => item.Name_Room)</td>
-            <td>@Html.DisplayFor(modelItem => item.Id_Cinema)</td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Изменить название</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Детали</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Name_Room)</td>
+                <td>@Html.DisplayFor(modelItem => item.Id_Cinema)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Изменить название</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Детали</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
