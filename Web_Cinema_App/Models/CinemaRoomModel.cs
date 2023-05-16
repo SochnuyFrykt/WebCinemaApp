@@ -9,9 +9,9 @@ namespace Web_Cinema_App.Models
         public int Id { get; set; }
 
         [Column("name_room")]
-        public string Name_Room { get; set; }
+        public string NameRoom { get; set; }
 
         [Column("id_cinema")]
-        public int Id_Cinema { get; set; }
+        public int IdCinema { get; set; }
     }
 }

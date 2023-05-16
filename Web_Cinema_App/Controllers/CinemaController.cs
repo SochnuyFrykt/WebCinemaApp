@@ -24,7 +24,7 @@ namespace Web_Cinema_App.Controllers
             List<string> cinemaName = new List<string>();
             foreach (var item in _context.Cinema.ToList())
             {
-                cinemaName.Add(item.Name_cinema);
+                cinemaName.Add(item.NameCinema);
             }
             return cinemaName;
         } 
