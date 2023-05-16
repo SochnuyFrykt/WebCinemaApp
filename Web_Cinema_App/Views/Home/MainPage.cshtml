@@ -9,18 +9,18 @@
 
 <div class="d-flex justify-content-center">
     <div class="row row-cols-1 row-cols-md-3 m-2 justify-content-center">
-        @foreach (var items in (List<FilmModel>)ViewData["Film"])
+        @*@foreach (var items in (List<FilmModel>)ViewData["Film"])
         {
             <div class="card text-center m-2" style="width: 18rem;">
                 <img src="..." class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">@items.Name</h5>
                     <p class="card-text">@items.Description</p>
-                    <p class="card-text">@items.Genre</p>
+                    <p class="card-text">@items.IdGenre</p>
                     <a href="#" class="btn btn-primary">Я пойду</a>
                 </div>
             </div>
-        }
+        }*@
     </div>
 </div>
 

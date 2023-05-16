@@ -8,6 +8,7 @@ builder.Services.AddControllersWithViews();
 //Даёт доступ DataContext в проекте
 builder.Services.AddDbContext<DataContextCinema>();
 builder.Services.AddDbContext<DataContextCinemaRoom>();
+builder.Services.AddDbContext<DataContextFilm>();
 
 var app = builder.Build();
 

@@ -10,95 +10,87 @@ using Web_Cinema_App.Models;
 
 namespace Web_Cinema_App.Controllers
 {
-    public class CinemaController : Controller
+    public class FilmController : Controller
     {
-        public readonly DataContextCinema _context;
+        private readonly DataContextFilm _context;
 
-        public CinemaController(DataContextCinema context)
+        public FilmController(DataContextFilm context)
         {
             _context = context;
         }
 
-        public List<string> GetCinemaName()
-        {
-            List<string> cinemaName = new List<string>();
-            foreach (var item in _context.Cinema.ToList())
-                cinemaName.Add(item.NameCinema);
-            return cinemaName;
-        } 
-
-        // GET: Cinema
+        // GET: Film
         public async Task<IActionResult> Index()
         {
-              return _context.Cinema != null ? 
-                          View(await _context.Cinema.ToListAsync()) :
-                          Problem("Entity set 'DataContext.Cinema'  is null.");
+              return _context.FilmModel != null ? 
+                          View(await _context.FilmModel.ToListAsync()) :
+                          Problem("Entity set 'DataContextFilm.FilmModel'  is null.");
         }
 
-        // GET: Cinema/Details/5
+        // GET: Film/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Cinema == null)
+            if (id == null || _context.FilmModel == null)
             {
                 return NotFound();
             }
 
-            var cinemaModel = await _context.Cinema
+            var filmModel = await _context.FilmModel
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (cinemaModel == null)
+            if (filmModel == null)
             {
                 return NotFound();
             }
 
-            return View(cinemaModel);
+            return View(filmModel);
         }
 
-        // GET: Cinema/Create
+        // GET: Film/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Cinema/Create
+        // POST: Film/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name_cinema")] CinemaModel cinemaModel)
+        public async Task<IActionResult> Create([Bind("Id,Name,Description,IdGenre")] FilmModel filmModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(cinemaModel);
+                _context.Add(filmModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(cinemaModel);
+            return View(filmModel);
         }
 
-        // GET: Cinema/Edit/5
+        // GET: Film/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Cinema == null)
+            if (id == null || _context.FilmModel == null)
             {
                 return NotFound();
             }
 
-            var cinemaModel = await _context.Cinema.FindAsync(id);
-            if (cinemaModel == null)
+            var filmModel = await _context.FilmModel.FindAsync(id);
+            if (filmModel == null)
             {
                 return NotFound();
             }
-            return View(cinemaModel);
+            return View(filmModel);
         }
 
-        // POST: Cinema/Edit/5
+        // POST: Film/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name_cinema")] CinemaModel cinemaModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,IdGenre")] FilmModel filmModel)
         {
-            if (id != cinemaModel.Id)
+            if (id != filmModel.Id)
             {
                 return NotFound();
             }
@@ -107,12 +99,12 @@ namespace Web_Cinema_App.Controllers
             {
                 try
                 {
-                    _context.Update(cinemaModel);
+                    _context.Update(filmModel);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CinemaModelExists(cinemaModel.Id))
+                    if (!FilmModelExists(filmModel.Id))
                     {
                         return NotFound();
                     }
@@ -121,51 +113,51 @@ namespace Web_Cinema_App.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
-            return View(cinemaModel);
+            return View(filmModel);
         }
 
-        // GET: Cinema/Delete/5
+        // GET: Film/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Cinema == null)
+            if (id == null || _context.FilmModel == null)
             {
                 return NotFound();
             }
 
-            var cinemaModel = await _context.Cinema
+            var filmModel = await _context.FilmModel
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (cinemaModel == null)
+            if (filmModel == null)
             {
                 return NotFound();
             }
 
-            return View(cinemaModel);
+            return View(filmModel);
         }
 
-        // POST: Cinema/Delete/5
+        // POST: Film/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Cinema == null)
+            if (_context.FilmModel == null)
             {
-                return Problem("Entity set 'DataContext.Cinema'  is null.");
+                return Problem("Entity set 'DataContextFilm.FilmModel'  is null.");
             }
-            var cinemaModel = await _context.Cinema.FindAsync(id);
-            if (cinemaModel != null)
+            var filmModel = await _context.FilmModel.FindAsync(id);
+            if (filmModel != null)
             {
-                _context.Cinema.Remove(cinemaModel);
+                _context.FilmModel.Remove(filmModel);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CinemaModelExists(int id)
+        private bool FilmModelExists(int id)
         {
-          return (_context.Cinema?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.FilmModel?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Web_Cinema_App.Entities
            "Password=root;" +
            "Database=Cinema_DB;";
 
-        public DbSet<CinemaRoomModel> CinemaRoom { get; set; }
+        public DbSet<FilmModel> FilmModel { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -22,7 +22,7 @@ namespace Web_Cinema_App.Entities
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<CinemaRoomModel>(e => e.ToTable("film"));
+            modelBuilder.Entity<FilmModel>(e => e.ToTable("film"));
             base.OnModelCreating(modelBuilder);
         }
     }

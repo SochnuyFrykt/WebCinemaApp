@@ -15,6 +15,6 @@ namespace Web_Cinema_App.Models
         public string Description { get; set; }
 
         [Column("id_genre")]
-        public string Genre { get; set; }
+        public int IdGenre { get; set; }
     }
 }
