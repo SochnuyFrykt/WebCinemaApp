@@ -25,7 +25,7 @@ namespace Web_Cinema_App.Controllers
             foreach (var item in _context.Cinema.ToList())
                 cinemaName.Add(item.NameCinema);
             return cinemaName;
-        } 
+        }
 
         // GET: Cinema
         public async Task<IActionResult> Index()

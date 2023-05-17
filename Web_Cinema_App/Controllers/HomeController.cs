@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Web_Cinema_App.Entities;
 using Web_Cinema_App.Models;
 
 namespace Web_Cinema_App.Controllers
@@ -15,8 +16,10 @@ namespace Web_Cinema_App.Controllers
 
         public IActionResult MainPage()
         {
-            //var filmController = new FilmController();
-            //ViewData["Film"] = filmController.Film;
+            var dataContex = new DataContextFilm();
+            var filmController = new FilmController(dataContex);
+
+            ViewData["Film"] = filmController.GetFilmModels();
 
             return View();
         }
