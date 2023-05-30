@@ -1,0 +1,29 @@
+﻿@model Web_Cinema_App.Models.CinemaModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Добавление кинотеатра</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NameCinema" class="control-label">Кинотеатр</label>
+                <input asp-for="NameCinema" class="form-control" />
+                <span asp-validation-for="NameCinema" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Создать" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Вернуться обратно</a>
+</div>
+
