@@ -5,95 +5,92 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Web_Cinema_App.Entities;
 using Web_Cinema_App.Models;
 
 namespace Web_Cinema_App.Controllers
 {
-    public class FilmController : Controller
+    public class PlaceController : Controller
     {
-        private readonly DataContextFilm _context;
+        private readonly DataContextPlace _context;
 
-        public FilmController(DataContextFilm context)
+        public PlaceController(DataContextPlace context)
         {
             _context = context;
         }
 
-        public List<FilmModel> GetFilmModels() => _context.Film.ToList();
-
-        // GET: Film
+        // GET: Place
         public async Task<IActionResult> Index()
         {
-            return _context.Film != null ?
-                        View(await _context.Film.ToListAsync()) :
-                        Problem("Entity set 'DataContextFilm.FilmModel'  is null.");
+              return _context.Place != null ? 
+                          View(await _context.Place.ToListAsync()) :
+                          Problem("Entity set 'DataContextPlace.Place'  is null.");
         }
 
-        // GET: Film/Details/5
+        // GET: Place/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Film == null)
+            if (id == null || _context.Place == null)
             {
                 return NotFound();
             }
 
-            var filmModel = await _context.Film
+            var placeModel = await _context.Place
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (filmModel == null)
+            if (placeModel == null)
             {
                 return NotFound();
             }
 
-            return View(filmModel);
+            return View(placeModel);
         }
 
-        // GET: Film/Create
+        // GET: Place/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Film/Create
+        // POST: Place/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,IdGenre")] FilmModel filmModel)
+        public async Task<IActionResult> Create([Bind("Id,IdRoom,Number,Row")] PlaceModel placeModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(filmModel);
+                _context.Add(placeModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(filmModel);
+            return View(placeModel);
         }
 
-        // GET: Film/Edit/5
+        // GET: Place/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Film == null)
+            if (id == null || _context.Place == null)
             {
                 return NotFound();
             }
 
-            var filmModel = await _context.Film.FindAsync(id);
-            if (filmModel == null)
+            var placeModel = await _context.Place.FindAsync(id);
+            if (placeModel == null)
             {
                 return NotFound();
             }
-            return View(filmModel);
+            return View(placeModel);
         }
 
-        // POST: Film/Edit/5
+        // POST: Place/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,IdGenre")] FilmModel filmModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,IdRoom,Number,Row")] PlaceModel placeModel)
         {
-            if (id != filmModel.Id)
+            if (id != placeModel.Id)
             {
                 return NotFound();
             }
@@ -102,12 +99,12 @@ namespace Web_Cinema_App.Controllers
             {
                 try
                 {
-                    _context.Update(filmModel);
+                    _context.Update(placeModel);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!FilmModelExists(filmModel.Id))
+                    if (!PlaceModelExists(placeModel.Id))
                     {
                         return NotFound();
                     }
@@ -118,49 +115,49 @@ namespace Web_Cinema_App.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(filmModel);
+            return View(placeModel);
         }
 
-        // GET: Film/Delete/5
+        // GET: Place/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Film == null)
+            if (id == null || _context.Place == null)
             {
                 return NotFound();
             }
 
-            var filmModel = await _context.Film
+            var placeModel = await _context.Place
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (filmModel == null)
+            if (placeModel == null)
             {
                 return NotFound();
             }
 
-            return View(filmModel);
+            return View(placeModel);
         }
 
-        // POST: Film/Delete/5
+        // POST: Place/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Film == null)
+            if (_context.Place == null)
             {
-                return Problem("Entity set 'DataContextFilm.FilmModel'  is null.");
+                return Problem("Entity set 'DataContextPlace.Place'  is null.");
             }
-            var filmModel = await _context.Film.FindAsync(id);
-            if (filmModel != null)
+            var placeModel = await _context.Place.FindAsync(id);
+            if (placeModel != null)
             {
-                _context.Film.Remove(filmModel);
+                _context.Place.Remove(placeModel);
             }
-
+            
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool FilmModelExists(int id)
+        private bool PlaceModelExists(int id)
         {
-            return (_context.Film?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Place?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

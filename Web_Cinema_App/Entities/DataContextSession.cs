@@ -3,7 +3,7 @@ using Web_Cinema_App.Models;
 
 namespace Web_Cinema_App.Entities
 {
-    public class DataContextFilm : DbContext
+    public class DataContextSession : DbContext
     {
         private string ConnectionPath =
            "Host=localhost;" +
@@ -12,7 +12,7 @@ namespace Web_Cinema_App.Entities
            "Password=root;" +
            "Database=Cinema_DB;";
 
-        public DbSet<FilmModel> Film { get; set; }
+        public DbSet<SessionModel> Sessions { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -22,7 +22,7 @@ namespace Web_Cinema_App.Entities
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<FilmModel>(e => e.ToTable("film"));
+            modelBuilder.Entity<SessionModel>(e => e.ToTable("session"));
             base.OnModelCreating(modelBuilder);
         }
     }

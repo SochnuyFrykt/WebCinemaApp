@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Web_Cinema_App.Models
 {
@@ -8,11 +9,11 @@ namespace Web_Cinema_App.Models
         [Column("id")]
         public int Id { get; set; }
 
-        [Column("date")]
-        public DateTime Date { get; set; }
+        [Column("date", TypeName = "date")]
+        public DateOnly Date { get; set; }
 
-        [Column("time")]
-        public DateTime Time { get; set; }
+        [Column("time", TypeName = "time without time zone")]
+        public TimeOnly Time { get; set; }
 
         [Column("id_film")]
         public int IdFilm { get; set; }
