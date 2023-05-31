@@ -5,8 +5,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
-
 //Даёт доступ DataContext в проекте
 builder.Services.AddDbContext<DataContextCinema>();
 builder.Services.AddDbContext<DataContextCinemaRoom>();

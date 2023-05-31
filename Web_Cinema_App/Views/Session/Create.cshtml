@@ -4,7 +4,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Добавить сеанс</h1>
 
 <h4>SessionModel</h4>
 <hr />
@@ -13,28 +13,28 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Date" class="control-label"></label>
+                <label asp-for="Date" class="control-label">Дата показа</label>
                 <input asp-for="Date" class="form-control" />
                 <span asp-validation-for="Date" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Time" class="control-label"></label>
+                <label asp-for="Time" class="control-label">Время показа</label>
                 <input asp-for="Time" class="form-control" />
                 <span asp-validation-for="Time" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdFilm" class="control-label"></label>
+                <label asp-for="IdFilm" class="control-label">Фильм</label>
                 <input asp-for="IdFilm" class="form-control" />
                 <span asp-validation-for="IdFilm" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Создать" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Вернуться обратно</a>
 </div>
 
