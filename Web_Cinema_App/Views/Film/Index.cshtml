@@ -4,30 +4,32 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Фильмы</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Добавить фильм</a>
 </p>
 <table class="table">
     <thead>
         <tr>
+            <th>Номер фильма</th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                Название
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                Описание
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdGenre)
+                Номер жанра
             </th>
-            <th></th>
+            <th>Действия</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
+                <td>@Html.DisplayFor(modelItem => item.Id)</td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
@@ -38,9 +40,8 @@
                     @Html.DisplayFor(modelItem => item.IdGenre)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Изменить</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
                 </td>
             </tr>
         }

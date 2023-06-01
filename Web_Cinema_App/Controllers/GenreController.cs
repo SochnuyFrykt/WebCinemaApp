@@ -27,24 +27,6 @@ namespace Web_Cinema_App.Controllers
                           Problem("Entity set 'DataContextGenre.Genre'  is null.");
         }
 
-        // GET: Genre/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Genre == null)
-            {
-                return NotFound();
-            }
-
-            var genreModel = await _context.Genre
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (genreModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(genreModel);
-        }
-
         // GET: Genre/Create
         public IActionResult Create()
         {

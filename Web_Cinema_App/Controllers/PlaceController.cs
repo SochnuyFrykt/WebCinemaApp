@@ -25,25 +25,7 @@ namespace Web_Cinema_App.Controllers
               return _context.Place != null ? 
                           View(await _context.Place.ToListAsync()) :
                           Problem("Entity set 'DataContextPlace.Place'  is null.");
-        }
-
-        // GET: Place/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Place == null)
-            {
-                return NotFound();
-            }
-
-            var placeModel = await _context.Place
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (placeModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(placeModel);
-        }
+        }        
 
         // GET: Place/Create
         public IActionResult Create()

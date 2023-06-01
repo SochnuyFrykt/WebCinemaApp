@@ -30,24 +30,6 @@ namespace Web_Cinema_App.Controllers
                         Problem("Entity set 'DataContextFilm.FilmModel'  is null.");
         }
 
-        // GET: Film/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Film == null)
-            {
-                return NotFound();
-            }
-
-            var filmModel = await _context.Film
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (filmModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(filmModel);
-        }
-
         // GET: Film/Create
         public IActionResult Create()
         {

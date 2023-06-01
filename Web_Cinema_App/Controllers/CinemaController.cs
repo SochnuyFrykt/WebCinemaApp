@@ -35,24 +35,6 @@ namespace Web_Cinema_App.Controllers
                           Problem("Entity set 'DataContext.Cinema'  is null.");
         }
 
-        // GET: Cinema/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Cinema == null)
-            {
-                return NotFound();
-            }
-
-            var cinemaModel = await _context.Cinema
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (cinemaModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(cinemaModel);
-        }
-
         // GET: Cinema/Create
         public IActionResult Create()
         {

@@ -27,24 +27,6 @@ namespace Web_Cinema_App.Controllers
                           Problem("Entity set 'DataContextSession.Sessions'  is null.");
         }
 
-        // GET: Session/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Sessions == null)
-            {
-                return NotFound();
-            }
-
-            var sessionModel = await _context.Sessions
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (sessionModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(sessionModel);
-        }
-
         // GET: Session/Create
         public IActionResult Create()
         {

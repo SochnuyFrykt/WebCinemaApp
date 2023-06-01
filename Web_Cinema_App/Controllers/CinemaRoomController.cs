@@ -22,30 +22,9 @@ namespace Web_Cinema_App.Controllers
         // GET: CinemaRoom
         public async Task<IActionResult> Index()
         {
-            var dataContex = new DataContextCinema();
-            var cinema = new CinemaController(dataContex);
-            ViewData["CinemaName"] = cinema.GetCinemaName();
             return _context.CinemaRoom != null ? 
                         View(await _context.CinemaRoom.ToListAsync()) :
                         Problem("Entity set 'DataContextCinemaRoom.CinemaRoom'  is null.");
-        }
-
-        // GET: CinemaRoom/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.CinemaRoom == null)
-            {
-                return NotFound();
-            }
-
-            var cinemaRoomModel = await _context.CinemaRoom
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (cinemaRoomModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(cinemaRoomModel);
         }
 
         // GET: CinemaRoom/Create

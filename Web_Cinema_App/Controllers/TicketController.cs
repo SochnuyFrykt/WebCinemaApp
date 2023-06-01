@@ -27,24 +27,6 @@ namespace Web_Cinema_App.Controllers
                           Problem("Entity set 'DataContextTicket.Ticket'  is null.");
         }
 
-        // GET: Ticket/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Ticket == null)
-            {
-                return NotFound();
-            }
-
-            var ticketModel = await _context.Ticket
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (ticketModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(ticketModel);
-        }
-
         // GET: Ticket/Create
         public IActionResult Create()
         {
